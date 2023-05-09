@@ -9,7 +9,7 @@ from clens.util.survey import Survey
 from clens.lensing.cov_DeltaSigma import CovDeltaSigma
 
 
-class DemoCosmoDC2(object):
+class DemoDESY1(object):
     """
     calculating covariance matrix at the given lens redshift, source redshift, lambda range, radial range
     """
@@ -77,7 +77,7 @@ class DemoCosmoDC2(object):
             self.output_loc + "DeltaSigma_cov_combined.dat"
         )  ## key results!
 
-    def calc_cov_full(self, diag_only):
+    def calc_cov_full(self, diag_only, fsky):
         cds = CovDeltaSigma(co=self.co, nu=self.nu, su=self.su, fsky=fsky)
         output = cds.calc_cov(
             lambda_min=self.lambda_min,
@@ -120,10 +120,10 @@ if __name__ == "__main__":
         sigma_lambda=0.18, lgM0=14.6258, alpha_M=1, lambda0=70
     )  # Costanzi21 for now
     su = Survey(
-        top_hat=True, zs_min=zs_mid - 0.05, zs_max=zs_mid + 0.05, n_src_arcmin=10
+        top_hat=True, zs_min=zs_mid - 0.05, zs_max=zs_mid + 0.05, n_src_arcmin=6
     )
 
-    cp = DemoCosmoDC2(
+    cp = DemoDESY1(
         co=co,
         nu=nu,
         su=su,
@@ -131,9 +131,9 @@ if __name__ == "__main__":
         zh_max=zh_max,
         lambda_min=lambda_min,
         lambda_max=lambda_max,
-        rp_min_hiMpc=0.1,
-        rp_max_hiMpc=100.0,
-        n_rp=n_rp,
+        rp_min_hiMpc=0.3,
+        rp_max_hiMpc=5,
+        n_rp=20,
         output_loc=output_loc,
     )
-    cp.calc_cov_full(diag_only=False)  # takes some time
+    cp.calc_cov_full(diag_only=False, fsky=fsky)  # takes some time
