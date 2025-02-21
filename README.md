@@ -2,10 +2,14 @@
 
 This package computes the cluster lensing signal and covariance matrices.  Both in terms of $\gamma_t$ and $\Delta\Sigma$.
 
-Put this in your `~/.bashrc`
+<!-- Put this in your `~/.bashrc`
 
-`export PYTHONPATH="/your_folder/cluster-lensing-cov/:$PYTHONPATH"`
+`export PYTHONPATH="/your_folder/cluster-lensing-cov/:$PYTHONPATH"` -->
 
+## Installation
+First run `git clone https://github.com/hywu/cluster-lensing-cov`
+
+Then run `pip install cluster-lensing-cov/`
 
 ## Contents
 
